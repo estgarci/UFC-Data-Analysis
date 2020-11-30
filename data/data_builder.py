@@ -16,3 +16,4 @@ def build_fighters_match_histories():
 
 if __name__ == '__main__':
 	#build_fighters_statistics()
+	print(fighter_stats_p)

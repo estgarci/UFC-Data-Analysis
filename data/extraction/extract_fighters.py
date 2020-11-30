@@ -9,6 +9,13 @@ import pandas as pd
 import json
 import string
 
+if __name__ == '__main__':
+    '''use export_fighters() to scrape and export fighter statistics'''
+    #UfcScraper().export_fighters()
+
+    '''use export_fights() to scrape and export the match history of every fighter'''
+    #UfcScraper().export_fights()
+
 def website_soup(url, segment):
     """
 	requests website's content and then converts
@@ -311,12 +318,12 @@ class UfcScraper(UrlExtractor):
 
     def clean_date(self, date):
         """
-		converts a string into a (mon-day-year) string format
+		converts the date string into a hyphened date ie: (month-day-year) 
 
 		Parameters
 		----------
 		date : str
-			date given in the ufc website in the form of "Jan 16, 1992"
+			date given in the website in the form of "Jan 16, 1992"
 		Returns
 		-------
 		str
@@ -337,6 +344,7 @@ class UfcScraper(UrlExtractor):
 
     @staticmethod
     def get_month(month):
+        #this method can be replaced bu the datetime package
         """
 		converts month's first 3 letters into a numerical month
 
@@ -377,7 +385,7 @@ class UfcScraper(UrlExtractor):
     @staticmethod
     def get_name_and_record(soup):
         """
-		extracts name and fighting record from a string
+		extracts the fighter's name and match history from a string
 
 		Parameters
 		----------
@@ -398,7 +406,7 @@ class UfcScraper(UrlExtractor):
     @staticmethod
     def clean_record(record):
         """
-		separates a record string in the format of (#-#-#) into 3 separate numbers
+		separates a string in the format (#-#-#) into 3 separate numbers
 
 		Parameters
 		----------
@@ -418,7 +426,8 @@ class UfcScraper(UrlExtractor):
 
 
 if __name__ == '__main__':
-    #use export_fighters() to scrape and export fighter statistics
+    '''use export_fighters() to scrape and export fighter statistics'''
     #UfcScraper().export_fighters()
-    #use export_fights() to scrape and export match history
-    UfcScraper().export_fights()
+
+    '''use export_fights() to scrape and export the match history of every fighter'''
+    #UfcScraper().export_fights()
