@@ -1,3 +1,4 @@
+
 '''extraction of data from ufc website
 extracts all information for each fighter '''
 
@@ -9,28 +10,21 @@ import pandas as pd
 import json
 import string
 
-if __name__ == '__main__':
-    '''use export_fighters() to scrape and export fighter statistics'''
-    #UfcScraper().export_fighters()
-
-    '''use export_fights() to scrape and export the match history of every fighter'''
-    #UfcScraper().export_fights()
 
 def website_soup(url, segment):
     """
-	requests website's content and then converts
-	an HTML segment into a beautifulSoup object
-
-	Parameters
-	----------
-	url : str
-		website link
-	segment : str
-		html tag in which the desired information is stored
-	Returns
-	-------
-	beautifulSoup object parsed from the desired segment
-	"""
+    requests website's content and then converts
+    an HTML segment into a beautifulSoup object
+    Parameters
+    ----------
+    url : str
+        website link
+    segment : str
+        html tag in which the desired information is stored
+    Returns
+    -------
+    beautifulSoup object parsed from the desired segment
+    """
     try:
         response = requests.get(url)
         response.raise_for_status()
@@ -53,20 +47,19 @@ class UrlExtractor(object):
     @staticmethod
     def alphabetize_urls(url, var_index):
         """
-		Generator of a list of alphabatized urls. Replaces 1 letter
-		in the base URL with every lower-case letter of the alphabet (a-z)
-
-		Parameters
-		----------
-		url: str
-			the full URL of ANY version of the parent website
-		var_index: int
-			index of the varying letter in the URL
-		Yields:
-		------
-		generator
-			27 alphabetized urls (a-z)
-		"""
+        Generator of a list of alphabatized urls. Replaces 1 letter
+        in the base URL with every lower-case letter of the alphabet (a-z)
+        Parameters
+        ----------
+        url: str
+            the full URL of ANY version of the parent website
+        var_index: int
+            index of the varying letter in the URL
+        Yields:
+        ------
+        generator
+            27 alphabetized urls (a-z)
+        """
         for letter in string.ascii_lowercase:
             new_url = url[:var_index] + letter + url[var_index + 1:]
             yield new_url
@@ -74,19 +67,18 @@ class UrlExtractor(object):
     @staticmethod
     def get_children_urls(url):
         """
-		parses fighter's urls from the given website
-
-		Parameters
-		----------
-		url : str
-			alphabetical url
-			for example; http://ufcstats.com/statistics/fighters?char=a&page=all
-			which contains all fighters with who's name start with the letter a
-		Yields
-		-------
-		str
-			list of fighter urls in the given alphabetical url
-		"""
+        parses fighter's urls from the given website
+        Parameters
+        ----------
+        url : str
+            alphabetical url
+            for example; http://ufcstats.com/statistics/fighters?char=a&page=all
+            which contains all fighters with who's name start with the letter a
+        Yields
+        -------
+        str
+            list of fighter urls in the given alphabetical url
+        """
         container = website_soup(url, 'tbody')
         tags = container.find_all('a')
         for tag in tags:
@@ -94,14 +86,13 @@ class UrlExtractor(object):
 
     def get_all_fighter_urls(self):
         """
-		Creates a list of ALL the fighter urls in the ufcstats.com website.
-
-		Returns:
-		---------
-		list[str]
-			list of all fighter's url in the http://ufcstats.com website
-			with no duplicates
-		"""
+        Creates a list of ALL the fighter urls in the ufcstats.com website.
+        Returns:
+        ---------
+        list[str]
+            list of all fighter's url in the http://ufcstats.com website
+            with no duplicates
+        """
         all_urls = []
         for url in self.alphabetize_urls(self.base_site, -10):
             all_urls.extend(self.get_children_urls(url))
@@ -121,7 +112,6 @@ class UfcScraper(UrlExtractor):
     def export_fights(self):
         """
         dumps all fighter statistics into a json file
-
         Writes:
         -----
         json file
@@ -147,13 +137,12 @@ class UfcScraper(UrlExtractor):
 
     def export_fighters(self):
         """
-		dumps all fighter statistics into a json file
-
-		Writes:
-		-----
-		json file
-			json file containing all scraped fighters without their fights
-		"""
+        dumps all fighter statistics into a json file
+        Writes:
+        -----
+        json file
+            json file containing all scraped fighters without their fights
+        """
         with open('fighters.json', 'w') as outfile:
             for i, link in enumerate(self.all_fighter_urls):
                 print(link)
@@ -164,14 +153,13 @@ class UfcScraper(UrlExtractor):
 
     def get_fighter_statistics(self, www):
         """
-		Creates a list of all the fighter's url in the ufc website.
-
-		Returns:
-		-----
-		list[str]
-			list of all of fighter urls in the http://ufcstats.com website
-			with no duplicates
-		"""
+        Creates a list of all the fighter's url in the ufc website.
+        Returns:
+        -----
+        list[str]
+            list of all of fighter urls in the http://ufcstats.com website
+            with no duplicates
+        """
 
         wb_soup = website_soup(www, 'section')
         '''Parsing fighter's name and record'''
@@ -226,7 +214,6 @@ class UfcScraper(UrlExtractor):
     def get_fights_information(section_soup):
         """
         Scrapes match history for a particular fighter. 
-
         Parameters
         ----------
         section_soup: BeautifulSoup
@@ -247,43 +234,42 @@ class UfcScraper(UrlExtractor):
             #sometimes a box might contain information about a future match, we do not want to save that
             #information, yet... in the future we will.
             if len(fight_attributes) == 17:
-                fight_attributes = {
-                                    'contenders': [fight_attributes[1], fight_attributes[2]],
-                                    'result': fight_attributes[0],
-                                    'method': fight_attributes[13],
-                                    'time': fight_attributes[16],
-                                    'fight_stats': [
-                                                    dict(name=fight_attributes[0],
-                                                         st=fight_attributes[3],
-                                                         td=fight_attributes[5],
-                                                         sub=fight_attributes[7],
-                                                         pss=fight_attributes[9]),
-                                                    dict(name=fight_attributes[1],
-                                                         st=fight_attributes[4],
-                                                         td=fight_attributes[6],
-                                                         sub=fight_attributes[8],
-                                                         pss=fight_attributes[10])
-                                                    ]
-
-                                    }
-                all_fights.append(fight_attributes)
+                match = {
+                            'contenders': [fight_attributes[1], fight_attributes[2]],
+                            'result': fight_attributes[0],
+                            'method': fight_attributes[13],
+                            'time': fight_attributes[16],
+                            'fight_stats': [
+                                            dict(name=fight_attributes[1],
+                                                 st=fight_attributes[3],
+                                                 td=fight_attributes[5],
+                                                 sub=fight_attributes[7],
+                                                 pss=fight_attributes[9]),
+                                            dict(name=fight_attributes[2],
+                                                 st=fight_attributes[4],
+                                                 td=fight_attributes[6],
+                                                 sub=fight_attributes[8],
+                                                 pss=fight_attributes[10])
+                                            ]
+                           }
+                
+                all_fights.append(match)
         return all_fights
 
     @staticmethod
     def clean_height(data):
         """
-		cleans height data coming from the ufcstats website and converts
-		the string representation of height into a float
-
-		Parameters
-		----------
-		data : str
-			data contained in the ufcstats website
-		Returns
-		-------
-		type
-			beautifulSoup object parsed from the desired segment
-		"""
+        cleans height data coming from the ufcstats website and converts
+        the string representation of height into a float
+        Parameters
+        ----------
+        data : str
+            data contained in the ufcstats website
+        Returns
+        -------
+        type
+            beautifulSoup object parsed from the desired segment
+        """
         try:
             cleaned_data = [integer for integer in data if integer.isnumeric()]
             feet = cleaned_data[0]
@@ -296,17 +282,16 @@ class UfcScraper(UrlExtractor):
     @staticmethod
     def clean_data(data):
         """
-		cleans the string and converts it into an int
-
-		Parameters
-		----------
-		data : str
-			data scraped from the website
-		Returns
-		-------
-		int
-			string that has been converted into an float
-		"""
+        cleans the string and converts it into an int
+        Parameters
+        ----------
+        data : str
+            data scraped from the website
+        Returns
+        -------
+        int
+            string that has been converted into an float
+        """
         '''cleans data from '%' and '/' and converts unicode data to a float'''
         digits = [integer for integer in data if integer.isnumeric() or '.' in integer]
 
@@ -318,17 +303,16 @@ class UfcScraper(UrlExtractor):
 
     def clean_date(self, date):
         """
-		converts the date string into a hyphened date ie: (month-day-year) 
-
-		Parameters
-		----------
-		date : str
-			date given in the website in the form of "Jan 16, 1992"
-		Returns
-		-------
-		str
-			(mon-day-year) string format
-		"""
+        converts the date string into a hyphened date ie: (month-day-year) 
+        Parameters
+        ----------
+        date : str
+            date given in the website in the form of "Jan 16, 1992"
+        Returns
+        -------
+        str
+            (mon-day-year) string format
+        """
         stringDate = ''.join(date[1:4])
         if '--' not in stringDate:
 
@@ -346,17 +330,16 @@ class UfcScraper(UrlExtractor):
     def get_month(month):
         #this method can be replaced bu the datetime package
         """
-		converts month's first 3 letters into a numerical month
-
-		Parameters
-		----------
-		month : str
-			3 letter representation of the month
-		Returns
-		-------
-		str
-			(mon-day-year) string format
-		"""
+        converts month's first 3 letters into a numerical month
+        Parameters
+        ----------
+        month : str
+            3 letter representation of the month
+        Returns
+        -------
+        str
+            (mon-day-year) string format
+        """
         if 'Jan' in month:
             return 1
         elif 'Feb' in month:
@@ -385,17 +368,16 @@ class UfcScraper(UrlExtractor):
     @staticmethod
     def get_name_and_record(soup):
         """
-		extracts the fighter's name and match history from a string
-
-		Parameters
-		----------
-		soup : BeautifulSoup
-			beautifulSoup object representation of the fighter's ufc website
-		Returns
-		-------
-		str, str
-			name and record represented as strings
-		"""
+        extracts the fighter's name and match history from a string
+        Parameters
+        ----------
+        soup : BeautifulSoup
+            beautifulSoup object representation of the fighter's ufc website
+        Returns
+        -------
+        str, str
+            name and record represented as strings
+        """
         container = soup.h2.text.split()
         record_index = [i for i, attribute in enumerate(container) if attribute == 'Record:'][0]
         name = ' '.join(container[0:record_index])
@@ -406,17 +388,16 @@ class UfcScraper(UrlExtractor):
     @staticmethod
     def clean_record(record):
         """
-		separates a string in the format (#-#-#) into 3 separate numbers
-
-		Parameters
-		----------
-		record : str
-			string in the format of (#-#-#)
-		Returns
-		-------
-		int,int,int
-			wins losses and draws
-		"""
+        separates a string in the format (#-#-#) into 3 separate numbers
+        Parameters
+        ----------
+        record : str
+            string in the format of (#-#-#)
+        Returns
+        -------
+        int,int,int
+            wins losses and draws
+        """
         wins_draws_losses = record.split('-')
         wins = wins_draws_losses[0]
         losses = wins_draws_losses[1]
@@ -430,4 +411,6 @@ if __name__ == '__main__':
     #UfcScraper().export_fighters()
 
     '''use export_fights() to scrape and export the match history of every fighter'''
-    #UfcScraper().export_fights()
+
+    UfcScraper().export_fights()
+    
