@@ -9,7 +9,7 @@ The main goal of this project is to perform a simple statistical analysis on UFC
 ### DATA EXTRACTION
 The data was downloaded from http://www.ufcstats.com using Python and a web-scraping library called [BeautifulSoup4](https://beautiful-soup-4.readthedocs.io/en/latest/).
 
-The [Python script](https://github.com/estgarci/UFC-Data-Analysis/blob/main/data/extraction/extract_fighters.py) extracts raw data into a .json object that contains every fighter in the UFC, from the year 1993 to present.
+The [Python script extracts raw data](https://github.com/estgarci/UFC-Data-Analysis/blob/main/data/extraction/extract_fighters.py) into a .json object that contains every fighter in the UFC, from the year 1993 to present.
 ### DATA PREPARATION
 The obvious way to sort the raw data is by following the UFC guidelines. That is; sort the data by sex, and then sort each sex into their current weight division. Unfortunately, our data does not contain either a weight-division, or sex attribute. Sorting each fighter by weight class will be trivial. However, sorting the data by sex will require the use of a sex-classifier.
 ### BUILDING THE SEX CLASSIFYER
