@@ -9,7 +9,7 @@ The data was downloaded from http://www.ufcstats.com using Python and a web-scra
 
 The [Python script extracts raw data](https://github.com/estgarci/UFC-Data-Analysis/blob/main/data/extraction/extract_fighters.py) into a .json object that contains every fighter in the UFC, from the year 1993 to present.
 ### DATA PREPARATION
-The obvious way to sort the raw data is by following the UFC guidelines. That is; sort the data by sex, and then sort each sex into their current weight division. Unfortunately, the raw data does not contain either a weight-division or sex attribute. The dataset must be stratified to continue the analysis. 
+The obvious way to sort the raw data is by following the UFC guidelines. That is; sort the data by sex, and then sort each sex into their current weight division. Unfortunately, the raw data does not contain either a weight-division or sex attribute. The raw data needed to be stratified before it was analyzed. Sorting the raw data by weight-division was trivial, however, sorting by sex required a sex-classifyer.
 
 ### BUILDING THE SEX CLASSIFYER
 I wrote a [Python script that classifies a fighter's sex](https://github.com/estgarci/UFC-Data-Analysis/blob/main/name_sex_classifier/sex_classifier.py) based on a fighter’s name. It uses the historical registered names from www.datagov.org to classify a name as male or female.
