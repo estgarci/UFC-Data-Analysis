@@ -3,7 +3,9 @@ EXTRACTION, PREPARATION, AND ANALYSIS OF THE ULTIMATE FIGHTING CHAMPIONSHIP HIST
 ### INTRO
 With UFC’s (Ultimate fighting championship) rising popularity, I could not help but to dive into the dataset and see what interesting trends I could discover. 
 
-The main goal of this project is to perform a simple statistical analysis on UFC fighters and their attributes like weight, reach, career knockouts, etc. I will answer questions like: what fighter has the most knock outs? What is the standard deviation of a fighter’s height in each weight-division? How does height distribution look like in each weight-division? And other interesting questions. 
+The main goal of this project is to perform a simple statistical analysis on UFC fighters and their attributes like weight, reach, career knockouts, etc. I will answer questions like: what fighter has the most knock outs? What is the standard deviation of a fighter’s height in each weight-division? How does height distribution look like in each weight-division? And other interesting questions.
+
+A detailed explanation of the analysis can be found in [this project's notebook](https://github.com/estgarci/UFC-Data-Analysis/blob/main/exploratory_analysis.ipynb)
 ### DATA EXTRACTION
 The data was downloaded from http://www.ufcstats.com using Python and a web-scraping library called [BeautifulSoup4](https://beautiful-soup-4.readthedocs.io/en/latest/).
 
