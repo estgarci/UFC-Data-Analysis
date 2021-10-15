@@ -16,6 +16,6 @@ I wrote a [Python script that classifies a fighter's sex](https://github.com/est
 
 The female’s feather weight-division is the only set of fighters that is already classified, as males do not have a feather weight-division. I used the female dataset to evaluate the precision and recall of the sex classifier.
 
-The classifier has 96% precision, a number that I consider 'good enough'. I could improve the classifier by feeding a machine learning model with fighter attributes such as name, weight, height, and reach. However, for the purposes of this project, 96% precision and 70% recall are good metrics to keep moving forward.
+After running the classifier through the feather weight-division, the classifier had 96% precision and 70% recall. I could improve the classifier by feeding a machine learning model with fighter attributes such as name, weight, height, and reach. However, for the purposes of this project, 96% precision and 70% recall are good metrics to keep moving forward.
 ### DATA ANALYSIS
 
