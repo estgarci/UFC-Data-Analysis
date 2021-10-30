@@ -5,7 +5,7 @@ The main goal of this project is to perform a simple statistical analysis on UFC
 
 A detailed explanation of the analysis can be found in this project's [Python jupyter-notebook.](https://github.com/estgarci/UFC-Data-Analysis/blob/main/exploratory_analysis.ipynb)
 ### DATA EXTRACTION
-I built a [web-scraping Python script](https://github.com/estgarci/UFC-Data-Analysis/blob/main/data/extraction/extract_fighters.py) that downloads raw data from (http://www.ufcstats.com). The raw dataset contains every fighter in the UFC from the year 1993 to present.
+I built a [web-scraping Python script](https://github.com/estgarci/UFC-Data-Analysis/blob/main/data/extraction/extract_fighters.py) that downloads public data from from http://www.ufcstats.com. The raw dataset contains a historical roster of fighter in the UFC from the year 1993 to present.
 ### DATA PREPARATION
 The obvious way to sort the raw data is by following the UFC guidelines. That is; sort the data by gender, and then sort each gender into their current weight division. Unfortunately, the raw data does not contain the weight-division and gender attributes by default.
 ### BUILDING THE GENDER CLASSIFYER
