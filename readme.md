@@ -7,7 +7,7 @@ A detailed explanation of the analysis can be found in this project's [Python ju
 ### DATA EXTRACTION
 I built a [web-scraping Python script](https://github.com/estgarci/UFC-Data-Analysis/blob/main/data/extraction/extract_fighters.py) that downloads public data from from www.ufcstats.com. The raw dataset contains a historical roster of fighters in the UFC; from the year 1993 to present.
 ### DATA PREPARATION
-The obvious way to sort the raw data is by following the UFC guidelines; by gender, and then sort each gender into their current weight division. However, the raw data does not contains neither attributes by default.
+The obvious way to sort the raw data is by following the UFC guidelines; by gender, and then sort each gender into their current weight division. However, the raw data does not contain either of the attributes by default.
 ### BUILDING THE GENDER CLASSIFYER
 In order to stratify the dataset by gender, I needed a 'gender' attribute. I wrote a [brute-force search algorithm using Python](https://github.com/estgarci/UFC-Data-Analysis/blob/main/name_sex_classifier/sex_classifier.py) that predicts fighters' gender given a fighter’s name. The algorithm uses historical names from the U.S national database www.datagov.org to predict the likelyhood that a name is traditionally male or female. The classifyer attained 96% precision and 70% recall, metrics that were considered 'good enough' for the purposes of this project.
 
