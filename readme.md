@@ -1,10 +1,12 @@
 # 28 YEARS OF UFC HISTORY
 EXTRACTION, PREPARATION, AND ANALYSIS OF THE ULTIMATE FIGHTING CHAMPIONSHIP HISTORICAL DATA
 ### INTRO
-The main goal of this project is to perform a simple statistical analysis on UFC fighters and their attributes like weight, reach, career knockouts, etc. I will answer questions like:
-#### 1. what fighter has the most knock outs?
-#### 2. What is the standard deviation of a fighter’s height in each weight-division?
-#### 3. How does height distribution look like in each weight-division? 
+The main goal of this project is to perform a simple statistical analysis on UFC fighters and their attributes like weight, reach, career knockouts, etc.
+
+###### I will answer questions like:
+##### 1. what fighter has the most knock outs?
+##### 2. What is the standard deviation of a fighter’s height in each weight-division?
+##### 3. How does height distribution look like in each weight-division? 
 
 A detailed explanation of the analysis can be found in this project's [Python jupyter-notebook.](https://github.com/estgarci/UFC-Data-Analysis/blob/main/exploratory_analysis.ipynb)
 ### DATA EXTRACTION
