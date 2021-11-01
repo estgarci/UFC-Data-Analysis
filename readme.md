@@ -14,7 +14,7 @@ I built a [web-scraping Python script](https://github.com/estgarci/UFC-Data-Anal
 The raw data does not contain a gender attribute by default. A classifyer was built to predict the gender of a fighter based on their name.
 
 ### BUILDING THE GENDER CLASSIFYER
-I built a brute-force search [algorithm using Python](https://github.com/estgarci/UFC-Data-Analysis/blob/main/name_sex_classifier/sex_classifier.py) that predicts fighters' gender given a fighter’s name. The algorithm uses historical names from the U.S national database www.datagov.org to determine gender based on the relative proportion of males/females. The classifyer attained 96% precision and 70% recall.
+I built a brute-force search [algorithm using Python](https://github.com/estgarci/UFC-Data-Analysis/blob/main/name_sex_classifier/sex_classifier.py) that predicts fighters' gender given a name. The algorithm uses historical names from the U.S national database www.datagov.org to determine gender based on the relative proportion of males/females. The classifyer attained 96% precision and 70% recall.
 
 The females' feather weight-division is the only set of fighters that is already classified, as females do not have a feather weight-division. I used the female dataset to evaluate the precision and recall of the gender classifier. After running the classifier through the names in the feather weight-division, the classifier had 96% precision and 70% recall. I could improve the classifier by feeding a machine learning model with some fighter attributes such as name, weight, height, and reach. However, for the purposes of this project, 96% precision and 70% recall are good metrics to keep moving forward.
 ### DATA ANALYSIS
