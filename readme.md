@@ -1,8 +1,8 @@
 # 28 YEARS OF UFC HISTORY
-EXTRACTION, PREPARATION, AND ANALYSIS OF THE ULTIMATE FIGHTING CHAMPIONSHIP HISTORICAL DATA
+Extraction preparation and analysis of the ultimate fighting championship historical data
+
 ### INTRO
-The purpose of this project was to learn more about data analysis with python. 
-The main goal of this project is to perform a simple statistical analysis on UFC fighters
+The purpose of this project was to learn about using python for data mining and analysis. The goal was to perform a simple statistical analysis on UFC fighters while focusing on the data mining aspect of the project. 
 
 #####   1. what fighter has the most knock outs?
 #####   2. What is the standard deviation of a fighter’s height in each weight-division?
