@@ -2,7 +2,7 @@
 Extraction, preparation, and analysis of the ultimate fighting championship historical data.
 
 ### Purpose
-The purpose of this project was to use python for data mining and analysis. The main objective was to perform an exploratory analysis on a historical data-set.
+The purpose of this project was to use python for data mining and analysis. The main objective was to perform an exploratory analysis on a historical data-set and obtain a list of statements based on the data.
 
 ### Central questions
 #####   1. What's the standard deviation of a fighter’s height in each weight-division?
