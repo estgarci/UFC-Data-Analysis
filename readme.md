@@ -1,5 +1,5 @@
 # 28 Years of UFC History
-Extraction, preparation, and analysis of the ultimate fighting championship historical data
+Extraction, preparation, and analysis of the ultimate fighting championship historical data.
 
 ### Purpose
 The purpose of this project was to use python for data mining and analysis.
