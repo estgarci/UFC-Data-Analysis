@@ -5,8 +5,8 @@ Extraction, preparation, and analysis of the ultimate fighting championship hist
 The purpose of this project was to use python for data mining and analysis. The main objective was to perform an exploratory analysis on a historical data-set.
 
 ### Central questions
-#####   1. What's the standard deviation of a fighter’s height in each weight-division?
-#####   2. How does height distribution look like in each weight-division? 
+#####   1. What's the standard deviation of a fighter’s height in each weight division?
+#####   2. How does height distribution look like in each weight division? 
 
 ### Data extraction
 I built a [web-scraping Python script](https://github.com/estgarci/UFC-Data-Analysis/blob/main/data/extraction/extract_fighters.py) that downloads public data from www.ufcstats.com. The raw dataset contains a historical roster of fighters in the UFC; from the year 1993 to present.
