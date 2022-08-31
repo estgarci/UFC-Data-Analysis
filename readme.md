@@ -12,9 +12,9 @@ The purpose of this project was to use python for data mining and analysis. The 
 I built a [web-scraping Python script](https://github.com/estgarci/UFC-Data-Analysis/blob/main/data/extraction/extract_fighters.py) that downloads public data from www.ufcstats.com. The raw dataset contains a historical roster of fighters in the UFC. It contains data from the year 1993 to present.
 
 ### Data preparation
-The raw data does not contain a division attribute by default. A classifyer was built to predict the missing value of a fighter based on their name.
+Built a classifyer that predics the missing value of a fighter based on their name.
 
-I built an [algorithm using Python](https://github.com/estgarci/UFC-Data-Analysis/blob/main/name_sex_classifier/sex_classifier.py) that predicts fighters gender based on their name. The algorithm uses historical names from the U.S national database www.datagov.org to determine if a fighter belongs to the female or male division based on the relative proportion of males/females. The classifyer attained 96% precision and 70% recall.
+I built an [script using Python](https://github.com/estgarci/UFC-Data-Analysis/blob/main/name_sex_classifier/sex_classifier.py) that predicts a fighters gender based on their name. The algorithm uses historical names from the U.S national database www.datagov.org to determine if a fighter belongs to the female or male division based on the relative proportion of males/females. The classifyer attained 96% precision and 70% recall.
 
 ### Data Analysis
 A detailed explanation of the analysis can be found in this project's [Python jupyter-notebook.](https://github.com/estgarci/UFC-Data-Analysis/blob/main/exploratory_analysis.ipynb)
