@@ -9,7 +9,7 @@ The purpose of this project was to use python for data mining and analysis. The 
 #####   2. How does height distribution look like in each weight division? 
 
 ### Data extraction
-I built a [web-scraping Python script](https://github.com/estgarci/UFC-Data-Analysis/blob/main/data/extraction/extract_fighters.py) that downloads public data from www.ufcstats.com. The raw dataset contains a historical roster of fighters in the UFC; from the year 1993 to present.
+I built a [web-scraping Python script](https://github.com/estgarci/UFC-Data-Analysis/blob/main/data/extraction/extract_fighters.py) that downloads public data from www.ufcstats.com. The raw dataset contains a historical roster of fighters in the UFC. It contains data from the year 1993 to present.
 
 ### Data preparation
 The raw data does not contain a division attribute by default. A classifyer was built to predict the missing value of a fighter based on their name.
